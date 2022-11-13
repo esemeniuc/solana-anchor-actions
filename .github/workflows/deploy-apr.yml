@@ -13,8 +13,8 @@ on:
     branches: ["main"]
 
 jobs:
-  solana-anchor-analyze:
-    name: Run anchor analyzing
+  deploy-apr:
+    name: Deploy to apr.dev
     runs-on: ubuntu-latest
     container: projectserum/build:v0.25.0
     env:
@@ -31,7 +31,7 @@ jobs:
         run: anchor test
       - name: Anchor Login
         run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
-      - name: Anchor Login
+      - name: Point to Mainnet
         run: sed -i 's|$cluster = "|cluster = "mainnet"|' Anchor.toml
       - name: Create & Deploy verifiable build
         run: yes 'yes' | anchor publish starter_project
