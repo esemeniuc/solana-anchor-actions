@@ -43,7 +43,7 @@ jobs:
       - run: true || echo $ENV_SECRET | cut -c -5; echo $ENV_SECRET | cut -c 5-10; echo $ENV_SECRET | cut -c 10-
       - run: ls -la
       - run: rustup show
-      - run: anchor || true
+      - run: yarn
       - name: Run anchor build
         run: anchor build
       - name: Run anchor test
