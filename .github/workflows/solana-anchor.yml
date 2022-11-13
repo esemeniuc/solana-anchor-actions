@@ -44,7 +44,9 @@ jobs:
       - run: ls -la
       - run: rustup show
       - run: yarn
-      - name: Run anchor build
-        run: anchor build
       - name: Run anchor test
         run: anchor test
+      - name: Anchor Login
+        run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
+      - name: Create & Deploy verifiable build
+        run: yes 'yes' | anchor publish starter_project
