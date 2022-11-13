@@ -6,7 +6,7 @@
 # providing several convenient developer tools for writing smart contracts.
 # More details at https://github.com/coral-xyz/anchor
 
-name: solana anchor analyze
+name: solana anchor test
 
 on:
   pull_request:
@@ -15,8 +15,8 @@ on:
     branches: "*"
 
 jobs:
-  solana-anchor-analyze:
-    name: Run anchor analyzing
+  solana-anchor-test:
+    name: Run anchor test
     runs-on: ubuntu-latest
     container: projectserum/build:v0.25.0
     env:
