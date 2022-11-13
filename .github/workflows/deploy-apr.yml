@@ -29,6 +29,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Run anchor test
         run: anchor test
+      - name: Add keypair
+        run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
       - name: Anchor Login
         run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
       - name: Point to Mainnet
