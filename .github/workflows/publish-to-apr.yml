@@ -29,12 +29,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Add keypair
         run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
-#      - name: Run anchor test
-#        run: anchor test
+      - name: Run anchor test
+        run: anchor test
       - name: Anchor Login
         run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
-      - name: Point to Mainnet
+      - name: Point to Mainnet (required for publishing)
         run: sed -i 's/^cluster = ".*/cluster = "mainnet"/' Anchor.toml
-
-      - name: Create & Deploy verifiable build
-        run: yes 'yes' | anchor publish starter_project
+      - name: Publish Source Code
+        run: yes 'yes' | anchor publish starter_project --skip-build

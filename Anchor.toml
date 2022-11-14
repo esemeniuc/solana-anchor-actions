@@ -1,9 +1,9 @@
 [features]
 seeds = false
 [programs.localnet]
-starter_project = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+starter_project = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLn1"
 [programs.mainnet]
-starter_project = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
+starter_project = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLn1"
 
 [registry]
 url = "https://anchor.projectserum.com"
