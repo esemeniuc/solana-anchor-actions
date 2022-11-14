@@ -28,7 +28,7 @@ jobs:
       - run: ls -la ~
       - run: ls -la /
       - run: pwd
-      - run: ls -la /github/
+      - run: ls -laR /github/
       - run: tree ~
       - name: Checkout code
         uses: actions/checkout@v2
