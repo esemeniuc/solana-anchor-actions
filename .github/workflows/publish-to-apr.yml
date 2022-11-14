@@ -29,7 +29,8 @@ jobs:
       - run: ls -la /
       - run: pwd
       - run: ls -laR /github/
-      - run: tree ~
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Add docker config
