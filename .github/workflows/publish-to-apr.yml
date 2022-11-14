@@ -26,7 +26,9 @@ jobs:
 #           actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     steps:
       - run: ls -la ~
+      - run: ls -la /
       - run: pwd
+      - run: ls -la /github/
       - run: tree ~
       - name: Checkout code
         uses: actions/checkout@v2
