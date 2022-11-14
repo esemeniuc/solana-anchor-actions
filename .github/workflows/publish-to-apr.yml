@@ -27,10 +27,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Add docker config
+        run: cp -r /github/home/.docker /root
       - name: Add keypair
         run: echo ${{ secrets.SOLANA_KEYPAIR_JSON }} > $HOME/.config/solana/id.json
       - name: Run anchor test
-        run: anchor test
+        run: yarn; anchor test
       - name: Anchor Login
         run: anchor login ${{ secrets.ANCHOR_PUBLISH_TOKEN }}
       - name: Point to Mainnet (required for publishing)
